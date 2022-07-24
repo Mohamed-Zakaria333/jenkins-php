@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage('Build') {
             environment{
-                cre=credintials('git')
+                cre=credentials('git')
             }
             steps {
                 echo 'Building.. zakaria from git hup'
@@ -13,7 +13,7 @@ pipeline {
         }
         stage('Test') {
              environment{
-                cre=credintials('doc')
+                cre=credentials('doc')
             }
             steps {
                 echo 'Testing.. zakaria from git hup'
