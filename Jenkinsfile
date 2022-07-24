@@ -7,7 +7,7 @@ pipeline {
             }
             steps {
                 sh 'echo "Service user is $SERVICE_CREDS_USR"'
-                sh 'echo "Service password is $SERVICE_CREDS_PSW"'
+             
 
             }
         }
@@ -18,7 +18,7 @@ pipeline {
             steps {
              
                 sh 'echo "SSH user is $SSH_CREDS_USR"'
-                sh 'echo "SSH passphrase is $SSH_CREDS_PSW"'
+              
             }
         }
     }
