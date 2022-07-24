@@ -9,8 +9,7 @@ pipeline {
             steps {
                 echo 'Building.. zakaria from git hup'
                 echo "${cre.Username}"
-                echo "${cre.Description}"
-                echo "${cre.Scope}"
+      
             }
         }
         stage('Test') {
