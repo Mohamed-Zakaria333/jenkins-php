@@ -8,7 +8,9 @@ pipeline {
             }
             steps {
                 echo 'Building.. zakaria from git hup'
-                echo '${cre.username}'
+                echo "${cre.Username}"
+                echo "${cre.Description}"
+                echo "${cre.Scope}"
             }
         }
         stage('Test') {
@@ -17,7 +19,7 @@ pipeline {
             }
             steps {
                 echo 'Testing.. zakaria from git hup'
-                echo '${cre.username}'
+                echo "${cre.Username}"
             }
         }
         stage('Deploy') {
