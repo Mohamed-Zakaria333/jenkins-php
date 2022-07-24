@@ -1,30 +1,24 @@
 pipeline {
     agent any
-
     stages {
-        stage('Build') {
-            steps{
-                 withCredentials([usernamePassword(credentialsId: 'git', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
-                 sh 'echo $PASSWORD'
-                 echo USERNAME
-                 echo "username is $USERNAME"
-                 }
-                echo 'Building.. zakaria from git hup'
+        stage('githup') {
+            environment {
+                SERVICE_CREDS = credentials('git')
+            }
+            steps {
+                sh 'echo "Service user is $SERVICE_CREDS_USR"'
+                sh 'echo "Service password is $SERVICE_CREDS_PSW"'
+                sh 'curl -u $SERVICE_CREDS https://myservice.example.com'
             }
         }
-        stage('Test') {
-            steps {
-                 withCredentials([usernamePassword(credentialsId: 'git', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
-                 sh 'echo $PASSWORD'
-                 echo USERNAME
-                 echo "username is $USERNAME"
-                 }
-                 echo'Testing.. zakaria from git hup'
+        stage('docker hup') {
+            environment {
+                SSH_CREDS = credentials('doc')
             }
-        }
-        stage('Deploy') {
             steps {
-                echo 'Deploying.... zakaria from git hup'
+                sh 'echo "SSH private key is located at $SSH_CREDS"'
+                sh 'echo "SSH user is $SSH_CREDS_USR"'
+                sh 'echo "SSH passphrase is $SSH_CREDS_PSW"'
             }
         }
     }
